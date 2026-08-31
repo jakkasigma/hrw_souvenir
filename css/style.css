@@ -1704,12 +1704,14 @@ a.contact-info__value:hover { opacity: 0.5; }
 }
 
 /* ============================================
-   HG PRODUCTS — 4-col product grid & Sticky Pin
+   HG PRODUCTS — 4-col product grid
    Seperti Hardgraft's collection listing
    ============================================ */
 .hg-products-pin {
   position: relative;
-  height: 240vh; /* Ruang scroll yang nyaman untuk transisi bergantian dari kiri ke kanan */
+  z-index: 1;
+  /* Memberikan ruang scroll agar efek sticky terasa */
+  padding-bottom: clamp(4rem, 8vw, 8rem);
 }
 
 .hg-products-sticky {
@@ -1717,7 +1719,7 @@ a.contact-info__value:hover { opacity: 0.5; }
   position: sticky;
   top: calc(var(--navbar-h) + 1.5rem);
   width: 100%;
-  z-index: 10;
+  z-index: 1;
 }
 
 .hg-products {
@@ -1790,11 +1792,13 @@ a.contact-info__value:hover { opacity: 0.5; }
 
 /* View all bar */
 .hg-view-all-bar {
+  position: relative;
+  z-index: 20;
   padding: var(--space-5) var(--pad);
-  
   display: flex;
   justify-content: flex-end;
   background: var(--color-bg);
+  box-shadow: none;
 }
 
 .hg-view-all-link {
@@ -1810,9 +1814,12 @@ a.contact-info__value:hover { opacity: 0.5; }
    HG WELCOME — Hardgraft welcome paragraph
    ============================================ */
 .hg-welcome {
+  position: relative;
+  z-index: 20;
   background: var(--color-bg);
   padding: clamp(5rem, 10vw, 9rem) var(--pad);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .hg-welcome__inner {
@@ -2282,7 +2289,23 @@ a.contact-info__value:hover { opacity: 0.5; }
    RESPONSIVE OVERRIDE
    ============================================ */
 @media (max-width: 1024px) {
-  .hg-products { grid-template-columns: repeat(2, 1fr); }
+  .hg-products-pin {
+    position: relative;
+    padding-bottom: 0;
+    height: 240vh; /* Ruang scroll aktif untuk transisi pinning khusus mobile */
+  }
+
+  .hg-products-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(var(--navbar-h) + 1rem);
+    width: 100%;
+    z-index: 1;
+  }
+
+  .hg-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
@@ -2381,7 +2404,7 @@ a.contact-info__value:hover { opacity: 0.5; }
 .service-item__link        { border-bottom: none !important; text-decoration: underline; text-underline-offset: 3px; }
 .hg-hero__cta              { border-bottom: none !important; text-decoration: underline; text-underline-offset: 3px; }
 .hg-welcome__link          { border-bottom: none !important; text-decoration: underline; text-underline-offset: 3px; }
-.hg-view-all-link          { text-decoration: underline; text-underline-offset: 3px; }
+.hg-view-all-link          { text-decoration: none !important; }
 .hg-statement__link        { border-bottom: none !important; text-decoration: underline; text-underline-offset: 3px; }
 .hg-feature__cta           { border-bottom: none !important; text-decoration: underline; text-underline-offset: 3px; }
 

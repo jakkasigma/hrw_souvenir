@@ -58,7 +58,7 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
-  /* STICKY PIN SCROLL FOR 4 PRODUCTS (DESKTOP & MOBILE) */
+  /* STICKY PIN SCROLL FOR 4 PRODUCTS (MOBILE ONLY <= 768px) */
   function initProductPinScroll() {
     const pinWrapper = document.getElementById('products-pin');
     if (!pinWrapper) return;
@@ -70,20 +70,26 @@
     const thresholds = [0.15, 0.35, 0.55, 0.75];
 
     function handleScroll() {
+      // Jalankan efek pinning hanya di layar mobile / tablet <= 768px
+      if (window.innerWidth > 768) {
+        products.forEach((product) => product.classList.remove('is-revealed'));
+        return;
+      }
+
       const rect = pinWrapper.getBoundingClientRect();
       const navbarH = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue('--navbar-h')
-      ) || 64;
+      ) || 56;
 
       // Jarak scroll yang telah dilewati di dalam wrapper pin
-      const scrolled = navbarH + 24 - rect.top;
+      const scrolled = navbarH + 16 - rect.top;
       const totalScrollable = rect.height - window.innerHeight;
 
       if (totalScrollable <= 0) return;
 
       const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
 
-      // Terapkan transisi pergantian foto dari kiri ke kanan secara bertahap
+      // Terapkan transisi pergantian foto dari kiri ke kanan secara bertahap di mobile
       products.forEach((product, index) => {
         const threshold = thresholds[index] || 0.5;
         if (progress >= threshold) {
@@ -95,6 +101,7 @@
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     handleScroll();
   }
 
