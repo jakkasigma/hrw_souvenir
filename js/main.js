@@ -58,10 +58,51 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
+  /* STICKY PIN SCROLL FOR 4 PRODUCTS (DESKTOP & MOBILE) */
+  function initProductPinScroll() {
+    const pinWrapper = document.getElementById('products-pin');
+    if (!pinWrapper) return;
+
+    const products = pinWrapper.querySelectorAll('.hg-product');
+    if (!products.length) return;
+
+    // Titik threshold scroll untuk 4 produk dari kiri ke kanan (0.0 - 1.0)
+    const thresholds = [0.15, 0.35, 0.55, 0.75];
+
+    function handleScroll() {
+      const rect = pinWrapper.getBoundingClientRect();
+      const navbarH = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--navbar-h')
+      ) || 64;
+
+      // Jarak scroll yang telah dilewati di dalam wrapper pin
+      const scrolled = navbarH + 24 - rect.top;
+      const totalScrollable = rect.height - window.innerHeight;
+
+      if (totalScrollable <= 0) return;
+
+      const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
+
+      // Terapkan transisi pergantian foto dari kiri ke kanan secara bertahap
+      products.forEach((product, index) => {
+        const threshold = thresholds[index] || 0.5;
+        if (progress >= threshold) {
+          product.classList.add('is-revealed');
+        } else {
+          product.classList.remove('is-revealed');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
   function init() {
     initNav();
     initSmoothScroll();
     initYear();
+    initProductPinScroll();
   }
 
   document.readyState === 'loading'
