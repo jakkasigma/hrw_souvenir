@@ -1,97 +1,136 @@
-/**
- * HRW Souvenir — Main Scripts v2.3
- * Nav overlay + smooth scroll + footer year
+﻿/**
+ * HRW Souvenir — Main Scripts v3.0
+ * Nav overlay + scroll progress + reveal animation + hero parallax + product pin
  */
 (function () {
   'use strict';
 
-  /* NAV OVERLAY */
+  /* ============================================
+     NAV OVERLAY
+     ============================================ */
   function initNav() {
-    const toggle  = document.getElementById('nav-toggle');
-    const overlay = document.getElementById('nav-overlay');
+    var toggle  = document.getElementById('nav-toggle');
+    var overlay = document.getElementById('nav-overlay');
     if (!toggle || !overlay) return;
 
-    let isOpen = false;
+    var isOpen = false;
 
-    const open = () => {
+    var open = function() {
       isOpen = true;
       overlay.classList.add('is-open');
       toggle.classList.add('is-active');
       document.body.style.overflow = 'hidden';
     };
 
-    const close = () => {
+    var close = function() {
       isOpen = false;
       overlay.classList.remove('is-open');
       toggle.classList.remove('is-active');
       document.body.style.overflow = '';
     };
 
-    toggle.addEventListener('click', () => (isOpen ? close() : open()));
-    overlay.querySelectorAll('[data-close]').forEach((l) => l.addEventListener('click', close));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen) close(); });
-  }
-
-  /* SMOOTH SCROLL */
-  function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener('click', (e) => {
-        const id = link.getAttribute('href');
-        if (id === '#') return;
-        const target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        const offset = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue('--navbar-h')
-        ) || 64;
-        window.scrollTo({
-          top: target.getBoundingClientRect().top + window.scrollY - offset,
-          behavior: 'smooth',
-        });
-      });
+    toggle.addEventListener('click', function() { isOpen ? close() : open(); });
+    overlay.querySelectorAll('[data-close]').forEach(function(l) {
+      l.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isOpen) close();
     });
   }
 
-  /* FOOTER YEAR */
+  /* ============================================
+     SCROLL PROGRESS INDICATOR
+     ============================================ */
+  function initScrollProgress() {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress  = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.height = progress + '%';
+    }, { passive: true });
+  }
+
+  /* ============================================
+     REVEAL ANIMATION — Fade Up on Scroll
+     ============================================ */
+  function initReveal() {
+    var elements = document.querySelectorAll('.reveal');
+    if (!elements.length || !('IntersectionObserver' in window)) {
+      // Fallback: show all immediately
+      elements.forEach(function(el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    elements.forEach(function(el) { observer.observe(el); });
+  }
+
+  /* ============================================
+     HERO PARALLAX — subtle image shift on scroll
+     ============================================ */
+  function initHeroParallax() {
+    var img = document.getElementById('hero-img');
+    if (!img) return;
+
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY;
+      // Shift image up at 20% of scroll speed — batas 180px max
+      var shift = Math.min(scrollY * 0.18, 180);
+      img.style.transform = 'translateY(' + shift + 'px)';
+    }, { passive: true });
+  }
+
+  /* ============================================
+     FOOTER YEAR
+     ============================================ */
   function initYear() {
-    const el = document.getElementById('footer-year');
+    var el = document.getElementById('footer-year');
     if (el) el.textContent = new Date().getFullYear();
   }
 
-  /* STICKY PIN SCROLL FOR 4 PRODUCTS (MOBILE ONLY <= 768px) */
+  /* ============================================
+     PRODUCT PIN SCROLL — Mobile image swap
+     ============================================ */
   function initProductPinScroll() {
-    const pinWrapper = document.getElementById('products-pin');
+    var pinWrapper = document.getElementById('products-pin');
     if (!pinWrapper) return;
 
-    const products = pinWrapper.querySelectorAll('.hg-product');
+    var products = pinWrapper.querySelectorAll('.hg-product');
     if (!products.length) return;
 
-    // Titik threshold scroll untuk 4 produk dari kiri ke kanan (0.0 - 1.0)
-    const thresholds = [0.15, 0.35, 0.55, 0.75];
+    var thresholds = [0.08, 0.2, 0.32, 0.44];
 
     function handleScroll() {
-      // Jalankan efek pinning hanya di layar mobile / tablet <= 768px
       if (window.innerWidth > 768) {
-        products.forEach((product) => product.classList.remove('is-revealed'));
+        products.forEach(function(p) { p.classList.remove('is-revealed'); });
         return;
       }
 
-      const rect = pinWrapper.getBoundingClientRect();
-      const navbarH = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--navbar-h')
-      ) || 56;
-
-      // Jarak scroll yang telah dilewati di dalam wrapper pin
-      const scrolled = navbarH + 16 - rect.top;
-      const totalScrollable = rect.height - window.innerHeight;
+      var rect      = pinWrapper.getBoundingClientRect();
+      var navbarH   = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-h')) || 56;
+      var scrolled  = navbarH + 16 - rect.top;
+      var totalScrollable = rect.height - window.innerHeight;
 
       if (totalScrollable <= 0) return;
 
-      const progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
+      var progress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
 
-      // Terapkan transisi pergantian foto dari kiri ke kanan secara bertahap di mobile
-      products.forEach((product, index) => {
-        const threshold = thresholds[index] || 0.5;
+      products.forEach(function(product, index) {
+        var threshold = thresholds[index] || 0.5;
         if (progress >= threshold) {
           product.classList.add('is-revealed');
         } else {
@@ -105,11 +144,68 @@
     handleScroll();
   }
 
+
+  /* ============================================
+     WELCOME FULL — border radius hilang saat full layar
+     ============================================ */
+  function initWelcomeBorderRadius() {
+    var welcomePin = document.getElementById('welcome-pin');
+    var welcomeEl  = welcomePin ? welcomePin.querySelector('.hg-welcome') : null;
+    if (!welcomePin || !welcomeEl) return;
+
+    // Transisi CSS untuk smooth snap
+    welcomeEl.style.transition = 'border-top-left-radius 0.35s ease, border-top-right-radius 0.35s ease';
+
+    function handleScroll() {
+      var rect = welcomeEl.getBoundingClientRect();
+
+      // Welcome dianggap "full" saat top-nya sudah menyentuh atau melewati 0
+      // (sudah naik sampai tepi atas viewport)
+      if (rect.top <= 1) {
+        welcomeEl.style.borderTopLeftRadius  = '0px';
+        welcomeEl.style.borderTopRightRadius = '0px';
+      } else {
+        welcomeEl.style.borderTopLeftRadius  = '';
+        welcomeEl.style.borderTopRightRadius = '';
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
+  /* ============================================
+     SMOOTH SCROLL — anchor links
+     ============================================ */
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var id = link.getAttribute('href');
+        if (id === '#') return;
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        var offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-h')) || 64;
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - offset,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
+
+  /* ============================================
+     INIT
+     ============================================ */
   function init() {
     initNav();
-    initSmoothScroll();
+    initScrollProgress();
+    initReveal();
+    initHeroParallax();
     initYear();
     initProductPinScroll();
+    initSmoothScroll();
+    initWelcomeBorderRadius();
   }
 
   document.readyState === 'loading'

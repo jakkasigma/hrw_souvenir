@@ -8,10 +8,13 @@
   <meta property="og:title" content="HRW Souvenir — Dibuat Bersama, Untuk Setiap Cerita" />
   <meta property="og:description" content="Souvenir, merchandise, dan sablon custom yang dibuat melalui kolaborasi dengan mitra lokal." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="./assets/images/logo/logo-lingkaran.png" type="image/png" />
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" href="./assets/images/logo/logo samping.png" type="image/png" />
+  <link rel="stylesheet" href="./css/style.css?v=3.0" />
 </head>
 <body>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" id="scroll-progress"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
@@ -32,7 +35,7 @@
   <div class="nav-overlay" id="nav-overlay">
     <nav class="nav-overlay__links">
       <a href="./pages/products.html" class="nav-overlay__link" data-close>Products</a>
-      <a href="./pages/galeri.html" class="nav-overlay__link" data-close>Galeri</a>
+      <a href="./pages/galeri.html"   class="nav-overlay__link" data-close>Galeri</a>
       <a href="./pages/about.html"    class="nav-overlay__link" data-close>About</a>
       <a href="./pages/contact.html"  class="nav-overlay__link" data-close>Contact</a>
     </nav>
@@ -43,32 +46,27 @@
     </div>
   </div>
 
-  <!-- ============================================
-       HERO — Gambar full bleed, heading di tengah-kiri vertikal
-       ============================================ -->
+  <!-- HERO -->
   <section class="hg-hero">
-
-    <!-- Gambar penuh, tidak ada overlay -->
     <div class="hg-hero__bg">
       <img
         src="./assets/images/products/banner/Instagram story - 1 (1).jpg"
         alt="HRW Souvenir"
         class="hg-hero__bg-img"
+        id="hero-img"
         loading="eager"
       />
     </div>
-
-    <!-- Heading di tengah secara vertikal, posisi kiri gambar -->
     <div class="hg-hero__content">
       <h1 class="hg-hero__heading">
         Souvenir &amp;<br />Merchandise<br />Custom.
       </h1>
+      <p class="hg-hero__intro">Dibuat rapi bersama mitra lokal — untuk setiap momen dan cerita.</p>
     </div>
-
   </section>
 
   <!-- Caption bar bawah hero -->
-  <div class="hg-hero__caption">
+  <div class="hg-hero__caption reveal">
     <div class="hg-hero__caption-left">
       <span class="hg-hero__product-name">Souvenir &amp; Merchandise Custom</span>
       <span class="hg-hero__product-sub">Dibuat bersama mitra lokal · HRW Souvenir</span>
@@ -76,170 +74,191 @@
     <a href="./pages/products.html" class="hg-hero__cta">Lihat Produk →</a>
   </div>
 
-  <!-- ============================================
-       PRODUCT STRIP (PINNED ON SCROLL)
-       ============================================ -->
+  <!-- PRODUCT STRIP -->
   <div class="hg-products-pin" id="products-pin">
     <div class="hg-products-sticky">
       <section class="hg-products">
-
         <a href="./pages/products.html#souvenir" class="hg-product">
+          <span class="hg-product__number">01</span>
           <div class="hg-product__img-wrap">
-            <img src="./assets/images/6 produk depan/tumbler.jpg" alt="Tumbler Custom HRW Souvenir" class="hg-product__img hg-product__img--default" loading="lazy" />
-            <img src="./assets/images/6 produk depan/tumbler_final.jpg" alt="Tumbler Custom HRW Souvenir" class="hg-product__img hg-product__img--hover" loading="lazy" />
+            <img src="./assets/images/6 produk depan/tumbler.jpg"       alt="Tumbler Custom HRW Souvenir"    class="hg-product__img hg-product__img--default" loading="lazy" />
+            <img src="./assets/images/6 produk depan/tumbler_final.jpg" alt="Tumbler Custom HRW Souvenir"    class="hg-product__img hg-product__img--hover"   loading="lazy" />
           </div>
           <div class="hg-product__info">
             <span class="hg-product__name">Tumbler Custom</span>
             <span class="hg-product__meta">Stainless &amp; Insulated · Tahan Suhu</span>
           </div>
         </a>
-
         <a href="./pages/products.html#merchandise" class="hg-product">
+          <span class="hg-product__number">02</span>
           <div class="hg-product__img-wrap">
-            <img src="./assets/images/6 produk depan/mug.jpg" alt="Mug Keramik Custom HRW Souvenir" class="hg-product__img hg-product__img--default" loading="lazy" />
-            <img src="./assets/images/6 produk depan/mug_final.jpg" alt="Mug Keramik Custom HRW Souvenir" class="hg-product__img hg-product__img--hover" loading="lazy" />
+            <img src="./assets/images/6 produk depan/mug.jpg"       alt="Mug Keramik Custom HRW Souvenir" class="hg-product__img hg-product__img--default" loading="lazy" />
+            <img src="./assets/images/6 produk depan/mug_final.jpg" alt="Mug Keramik Custom HRW Souvenir" class="hg-product__img hg-product__img--hover"   loading="lazy" />
           </div>
           <div class="hg-product__info">
             <span class="hg-product__name">Mug Keramik</span>
             <span class="hg-product__meta">Custom Print · Hadiah &amp; Kantor</span>
           </div>
         </a>
-
         <a href="./pages/products.html#sablon" class="hg-product">
+          <span class="hg-product__number">03</span>
           <div class="hg-product__img-wrap">
-            <img src="./assets/images/6 produk depan/totebag.jpg" alt="Totebag Canvas HRW Souvenir" class="hg-product__img hg-product__img--default" loading="lazy" />
-            <img src="./assets/images/6 produk depan/totebag_final.jpg" alt="Totebag Canvas HRW Souvenir" class="hg-product__img hg-product__img--hover" loading="lazy" />
+            <img src="./assets/images/6 produk depan/totebag.jpg"       alt="Totebag Canvas HRW Souvenir" class="hg-product__img hg-product__img--default" loading="lazy" />
+            <img src="./assets/images/6 produk depan/totebag_final.jpg" alt="Totebag Canvas HRW Souvenir" class="hg-product__img hg-product__img--hover"   loading="lazy" />
           </div>
           <div class="hg-product__info">
             <span class="hg-product__name">Totebag Canvas</span>
             <span class="hg-product__meta">Kuat, Fungsional &amp; Sablon Presisi</span>
           </div>
         </a>
-
         <a href="./pages/products.html#custom" class="hg-product">
+          <span class="hg-product__number">04</span>
           <div class="hg-product__img-wrap">
-            <img src="./assets/images/6 produk depan/kaos.jpg" alt="Kaos Custom HRW Souvenir" class="hg-product__img hg-product__img--default" loading="lazy" />
-            <img src="./assets/images/6 produk depan/kaos_final.jpg" alt="Kaos Custom HRW Souvenir" class="hg-product__img hg-product__img--hover" loading="lazy" />
+            <img src="./assets/images/6 produk depan/kaos.jpg"       alt="Kaos Custom HRW Souvenir" class="hg-product__img hg-product__img--default" loading="lazy" />
+            <img src="./assets/images/6 produk depan/kaos_final.jpg" alt="Kaos Custom HRW Souvenir" class="hg-product__img hg-product__img--hover"   loading="lazy" />
           </div>
           <div class="hg-product__info">
             <span class="hg-product__name">Kaos Custom</span>
             <span class="hg-product__meta">Bahan Katun Premium &amp; Sablon Halus</span>
           </div>
         </a>
-
       </section>
     </div>
   </div>
 
-  <section class="hg-welcome">
-    <div class="hg-welcome__inner">
-      <p class="hg-welcome__text">
-        Selamat datang di HRW Souvenir dan terima kasih sudah meluangkan waktu untuk mengenal kami.
-        Di tengah begitu banyak pilihan di luar sana, kami memilih untuk tetap sederhana dan fokus pada
-        produk yang punya nilai, desain yang tidak lekang oleh waktu, dan kualitas yang bisa kamu pegang.
-        Sesuatu yang layak untuk dikenang.
-      </p>
-      <a href="./pages/products.html" class="hg-welcome__link">Lihat Produk →</a>
+  <!-- WELCOME -->
+  <div class="hg-welcome-pin" id="welcome-pin">
+    <div class="hg-welcome-sticky">
+      <section class="hg-welcome">
+        <div class="hg-welcome__inner">
+          <p class="hg-welcome__text">
+            Selamat datang di HRW Souvenir. Kami membuat souvenir, merchandise, dan sablon custom untuk momen yang ingin dikenang — sederhana, rapi, dibuat bersama dengan perhatian pada detail.
+          </p>
+          <div class="hg-welcome__meta">
+            <span>Made with local partners</span>
+            <span>Custom orders welcome</span>
+          </div>
+          <a href="./pages/products.html" class="hg-welcome__link">Lihat Produk →</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- FEATURE — Tote Bag (card overlap dari Welcome) -->
+  <div class="hg-feature-pin">
+    <section class="hg-feature hg-feature--story">
+      <a href="./pages/products.html" class="hg-feature__link">
+        <div class="hg-feature__img-wrap">
+          <img src="./assets/images/6 produk depan/totebag_final.jpg" alt="HRW Souvenir — Tote Bag Custom" class="hg-feature__img" loading="lazy" />
+        </div>
+        <div class="hg-feature__body">
+          <h2 class="hg-feature__heading">Tote Bag Custom</h2>
+          <p class="hg-feature__desc">Bentuk sederhana, fungsi harian, dan ruang visual yang cukup untuk identitas brand, komunitas, atau acara.</p>
+          <span class="hg-feature__cta">LIHAT SELENGKAPNYA</span>
+        </div>
+      </a>
+    </section>
+  </div>
+
+  <!-- PROCESS -->
+  <section class="hg-process" aria-labelledby="process-title">
+    <div class="hg-process__inner">
+      <div class="hg-process__head reveal">
+        <span class="hg-process__eyebrow">Process</span>
+        <h2 id="process-title" class="hg-process__title">Dibuat pelan,<br />dipikirkan detailnya.</h2>
+      </div>
+      <div class="hg-process__grid">
+        <article class="hg-process__item reveal">
+          <span class="hg-process__num">01</span>
+          <h3>Brief</h3>
+          <p>Ceritakan kebutuhan, jumlah, deadline, bahan, dan arah visual yang diinginkan.</p>
+        </article>
+        <article class="hg-process__item reveal reveal-delay-1">
+          <span class="hg-process__num">02</span>
+          <h3>Desain</h3>
+          <p>Kami bantu susun layout, warna, dan detail produksi agar hasilnya rapi.</p>
+        </article>
+        <article class="hg-process__item reveal reveal-delay-2">
+          <span class="hg-process__num">03</span>
+          <h3>Produksi</h3>
+          <p>Produk dibuat bersama mitra lokal dengan perhatian pada finishing dan fungsi.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ============================================
-       FEATURE PRODUCT
-       ============================================ -->
-  <section class="hg-feature">
-    <a href="./pages/products.html" class="hg-feature__link">
-      <div class="hg-feature__img-wrap">
-        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1800&q=80&auto=format&fit=crop" alt="HRW Souvenir — Tote Bag Custom" class="hg-feature__img" loading="lazy" />
-      </div>
-      <div class="hg-feature__body">
-        <h2 class="hg-feature__heading">Tote Bag Custom</h2>
-        <p class="hg-feature__desc">Desain bebas, bahan pilihan, minimum order fleksibel.</p>
-        <span class="hg-feature__cta">LIHAT SELENGKAPNYA</span>
-      </div>
-    </a>
-  </section>
-
-  <!-- ============================================
-       BRAND STATEMENT
-       ============================================ -->
+  <!-- BRAND STATEMENT -->
   <section class="hg-statement">
-    <div class="hg-statement__inner">
+    <div class="hg-statement__inner reveal">
       <p class="hg-statement__text">
-        HRW Souvenir menyediakan souvenir, merchandise, dan sablon custom untuk berbagai kebutuhan.
-        Desain bisa disesuaikan — jumlah, bahan, ukuran, dan finishing sesuai permintaan.
+        HRW Souvenir menyediakan souvenir, merchandise, dan sablon custom untuk berbagai kebutuhan. Desain bisa disesuaikan — jumlah, bahan, ukuran, dan finishing sesuai permintaan.
       </p>
       <a href="./pages/products.html" class="hg-statement__link">Lihat semua produk →</a>
     </div>
   </section>
 
-  <!-- ============================================
-       SECOND FEATURE
-       ============================================ -->
+  <!-- FEATURE — Galeri -->
   <section class="hg-feature hg-feature--alt">
     <a href="./pages/galeri.html" class="hg-feature__link">
       <div class="hg-feature__img-wrap">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80&auto=format&fit=crop" alt="HRW Souvenir — Galeri" class="hg-feature__img" loading="lazy" />
+        <img src="./assets/images/galery/IMG-20260830-WA0062.jpg" alt="HRW Souvenir — Galeri" class="hg-feature__img" loading="lazy" />
       </div>
       <div class="hg-feature__body">
         <h2 class="hg-feature__heading">Galeri</h2>
-        <p class="hg-feature__desc">Dokumentasi produk dan karya HRW Souvenir.</p>
+        <p class="hg-feature__desc">Dokumentasi produk dan karya HRW Souvenir — souvenir, merchandise, dan sablon yang sudah kami kerjakan.</p>
         <span class="hg-feature__cta">LIHAT GALERI</span>
       </div>
     </a>
   </section>
 
-  <!-- ============================================
-       TRUST BAR
-       ============================================ -->
+  <!-- TRUST BAR -->
   <div class="hg-trust">
     <div class="hg-trust__inner">
-      <div class="hg-trust__item">
+      <div class="hg-trust__item reveal">
         <p class="hg-trust__title">Custom Desain</p>
         <p class="hg-trust__desc">Desain produk sesuai keinginanmu — logo, warna, ukuran, dan detail lainnya bisa diatur.</p>
       </div>
-      <div class="hg-trust__item">
+      <div class="hg-trust__item reveal reveal-delay-1">
         <p class="hg-trust__title">Berbagai Produk</p>
         <p class="hg-trust__desc">Tote bag, pouch, t-shirt, sablon, dan berbagai produk souvenir lainnya tersedia.</p>
       </div>
-      <div class="hg-trust__item">
+      <div class="hg-trust__item reveal reveal-delay-2">
         <p class="hg-trust__title">Minimum Order Fleksibel</p>
         <p class="hg-trust__desc">Cocok untuk perorangan, komunitas kecil, hingga kebutuhan acara skala besar.</p>
       </div>
-      <div class="hg-trust__item">
+      <div class="hg-trust__item reveal reveal-delay-3">
         <p class="hg-trust__title">Konsultasi Gratis</p>
         <p class="hg-trust__desc">Tidak tahu harus mulai dari mana? Hubungi kami via WhatsApp — kami siap bantu.</p>
       </div>
     </div>
   </div>
 
-  <!-- ============================================
-       FOOTER
-       ============================================ -->
+  <!-- FOOTER -->
   <footer class="footer" id="contact">
     <div class="footer__inner">
       <div class="footer__logo">
         <img src="./assets/images/logo/logo samping.png" alt="HRW Souvenir" />
       </div>
-      <p class="footer__tagline">Souvenir &amp; Merchandise Custom.</p>
+      <p class="footer__tagline">"Dibuat Bersama, Untuk Setiap Cerita."</p>
       <p class="footer__desc">Souvenir, merchandise, dan sablon custom untuk berbagai kebutuhan — acara, komunitas, organisasi, dan bisnis di Indonesia.</p>
       <div class="footer__links">
         <a href="./pages/products.html" class="footer__link">Products</a>
-        <span class="footer__sep">·</span>
-        <a href="./pages/galeri.html" class="footer__link">Galeri</a>
-        <span class="footer__sep">·</span>
-        <a href="./pages/about.html" class="footer__link">About</a>
-        <span class="footer__sep">·</span>
-        <a href="./pages/contact.html" class="footer__link">Contact</a>
-        <span class="footer__sep">·</span>
+        <span class="footer__sep">&middot;</span>
+        <a href="./pages/galeri.html"   class="footer__link">Galeri</a>
+        <span class="footer__sep">&middot;</span>
+        <a href="./pages/about.html"    class="footer__link">About</a>
+        <span class="footer__sep">&middot;</span>
+        <a href="./pages/contact.html"  class="footer__link">Contact</a>
+        <span class="footer__sep">&middot;</span>
         <a href="https://wa.me/6281234567890" target="_blank" class="footer__link">WhatsApp</a>
-        <span class="footer__sep">·</span>
+        <span class="footer__sep">&middot;</span>
         <a href="https://instagram.com/hrwsouvenir" target="_blank" class="footer__link">Instagram</a>
-        <span class="footer__sep">·</span>
+        <span class="footer__sep">&middot;</span>
         <a href="mailto:hello@hrwsouvenir.com" class="footer__link">Email</a>
       </div>
       <div class="footer__bottom">
-        <p class="footer__copy">© <span id="footer-year">2026</span> HRW Souvenir. All Rights Reserved.</p>
-        <p class="footer__essence">Create · Collaborate · Grow</p>
+        <p class="footer__copy">&copy; <span id="footer-year">2026</span> HRW Souvenir. All Rights Reserved.</p>
+        <p class="footer__essence">Create &middot; Collaborate &middot; Grow</p>
       </div>
     </div>
   </footer>
