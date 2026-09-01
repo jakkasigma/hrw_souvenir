@@ -87,8 +87,12 @@
     if (!img) return;
 
     window.addEventListener('scroll', function() {
+      // Nonaktif di mobile — mencegah gambar terlihat lebih kecil saat scroll
+      if (window.innerWidth <= 768) {
+        img.style.transform = '';
+        return;
+      }
       var scrollY = window.scrollY;
-      // Shift image up at 20% of scroll speed — batas 180px max
       var shift = Math.min(scrollY * 0.18, 180);
       img.style.transform = 'translateY(' + shift + 'px)';
     }, { passive: true });
