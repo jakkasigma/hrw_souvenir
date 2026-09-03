@@ -8,7 +8,7 @@
   <link rel="icon" href="../assets/images/logo/logo lingkaran.png" type="image/png" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
+<body class="about-dark">
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
@@ -25,11 +25,11 @@
     </div>
   </nav>
 
-  <!-- FULLSCREEN NAV OVERLAY -->
+  <!-- NAV OVERLAY -->
   <div class="nav-overlay" id="nav-overlay">
     <nav class="nav-overlay__links">
       <a href="./products.html" class="nav-overlay__link" data-close>Products</a>
-      <a href="./galeri.html" class="nav-overlay__link" data-close>Galeri</a>
+      <a href="./galeri.html"   class="nav-overlay__link" data-close>Galeri</a>
       <a href="./about.html"    class="nav-overlay__link nav-overlay__link--active" data-close>About</a>
       <a href="./contact.html"  class="nav-overlay__link" data-close>Contact</a>
     </nav>
@@ -40,141 +40,113 @@
     </div>
   </div>
 
-  <!-- PAGE HEADER -->
-  <header class="page-header">
-    <div class="page-header__inner">
-      <span class="page-header__eyebrow">HRW Souvenir</span>
-      <h1 class="page-header__title">About</h1>
-    </div>
-  </header>
+  <!-- SCROLL STORY WRAPPER — tinggi = jumlah panel x 100vh -->
+  <div class="asc-wrap" id="asc-wrap">
 
-  <!-- ABOUT BODY -->
-  <section class="about-page">
+    <!-- Stage — sticky, konten berganti di sini -->
+    <div class="asc-stage" id="asc-stage">
 
-    <!-- Brand story — full width serif quote -->
-    <div class="about-story">
-      <div class="about-story__inner">
-        <p class="about-story__quote">
-          "HRW Souvenir bukan hanya tempat membeli souvenir. HRW Souvenir adalah bagian dari proses menciptakan produk dan peluang bersama."
-        </p>
+      <!-- Panel 1 — "About" besar -->
+      <div class="asc-panel asc-panel--center is-active" data-panel="1">
+        <span class="asc-word">About</span>
       </div>
-    </div>
 
-    <!-- Detail section -->
-    <div class="about">
-      <div class="about__inner">
-        <div class="about__img-wrap">
-          <img src="../assets/images/products/pouch.jpg" alt="HRW Souvenir produk" loading="lazy" />
+      <!-- Panel 2 — Header detail -->
+      <div class="asc-panel asc-panel--left" data-panel="2">
+        <span class="asc-eyebrow">Tentang Kami</span>
+        <h1 class="asc-heading">Dibuat bersama,<br />untuk setiap cerita.</h1>
+        <p class="asc-desc">HRW Souvenir adalah usaha kreatif yang tumbuh melalui kolaborasi dengan mitra lokal — penjahit, pengrajin, percetakan, dan pelaku UMKM.</p>
+      </div>
+
+      <!-- Panel 3 — gambar + teks About -->
+      <div class="asc-panel asc-panel--split" data-panel="3">
+        <div class="asc-split__img">
+          <img src="../assets/images/products/pouch.jpg" alt="Produk HRW Souvenir" loading="lazy" />
         </div>
-        <div>
-          <span class="about__eyebrow">Tentang Kami</span>
-          <h2 class="about__heading">About HRW Souvenir</h2>
-          <p class="about__copy">
-            HRW Souvenir adalah usaha kreatif yang bergerak dalam bidang souvenir, merchandise, dan sablon.
-          </p>
-          <p class="about__copy">
-            Kami percaya bahwa sebuah produk memiliki cerita di balik proses pembuatannya. Karena itu, HRW Souvenir membangun proses produksi melalui kolaborasi dengan berbagai pihak — penjahit, pengrajin, percetakan, dan pelaku usaha lokal — untuk menghadirkan produk yang sesuai kebutuhan pelanggan sekaligus menciptakan peluang bagi mitra yang terlibat.
-          </p>
-          <p class="about__copy">
-            Di balik setiap produk terdapat proses, keterampilan, dan orang-orang yang ikut berkontribusi. Bagi HRW Souvenir, sebuah pesanan bukan sekadar transaksi antara pelanggan dan penjual.
-          </p>
-
-          <span class="about__vision-label">Vision</span>
-          <blockquote class="about__vision">
-            Menjadi brand souvenir yang menghadirkan produk bermakna sekaligus tumbuh bersama masyarakat melalui kolaborasi dan pemberdayaan ekonomi lokal.
-          </blockquote>
-
-          <div class="about__values">
-            <span class="about__value">Quality</span>
-            <span class="about__value">Collaboration</span>
-            <span class="about__value">Meaning</span>
-            <span class="about__value">Sustainability</span>
+        <div class="asc-split__content">
+          <span class="asc-eyebrow">Tentang Kami</span>
+          <h2 class="asc-subheading">About HRW Souvenir</h2>
+          <p class="asc-copy">HRW Souvenir adalah usaha kreatif yang bergerak dalam bidang souvenir, merchandise, dan sablon.</p>
+          <p class="asc-copy">Kami membangun proses produksi melalui kolaborasi — penjahit, pengrajin, percetakan, dan pelaku usaha lokal — untuk menghadirkan produk bermakna sekaligus menciptakan peluang bagi mitra yang terlibat.</p>
+          <div class="asc-values">
+            <span>Quality</span>
+            <span>Collaboration</span>
+            <span>Meaning</span>
+            <span>Sustainability</span>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Collaboration / Made Together -->
-    <div class="together">
-      <div class="together__image">
-        <img src="../assets/images/products/totebag.jpg" alt="Proses kolaborasi HRW Souvenir" loading="lazy" />
+      <!-- Panel 4 — "Made Together." besar -->
+      <div class="asc-panel asc-panel--center" data-panel="4">
+        <span class="asc-word">Made<br />Together.</span>
       </div>
-      <div class="together__body">
-        <p class="together__eyebrow">Kolaborasi</p>
-        <h2 class="together__heading">Made Together</h2>
-        <p class="together__subheading">One Order. Many Hands.</p>
-        <p class="together__copy">
-          Sebuah produk tidak selalu dibuat oleh satu tangan. HRW Souvenir bekerja bersama berbagai mitra dalam proses produksi — penjahit, pengrajin, percetakan — untuk menciptakan produk yang sesuai kebutuhan pelanggan sekaligus membuka peluang kolaborasi.
-        </p>
-        <p class="together__copy">
-          Mitra yang terlibat: penjahit, pengrajin, percetakan, pemasok bahan, dan pelaku UMKM lainnya.
-        </p>
-        <blockquote class="together__quote">
-          "Satu pesanan, lebih banyak pihak yang tumbuh."
-        </blockquote>
-      </div>
-    </div>
 
-    <!-- Brand Essence -->
-    <div class="about-essence">
-      <div class="about-essence__inner">
-        <div class="about-essence__item">
-          <span class="about-essence__word">Create</span>
-          <p class="about-essence__desc">Menciptakan produk yang memiliki nilai, fungsi, kualitas, dan makna bagi pelanggan.</p>
+      <!-- Panel 5 — teks + gambar kolaborasi -->
+      <div class="asc-panel asc-panel--split asc-panel--reverse" data-panel="5">
+        <div class="asc-split__content">
+          <span class="asc-eyebrow">Kolaborasi</span>
+          <h2 class="asc-subheading">One Order. Many Hands.</h2>
+          <p class="asc-copy">Sebuah produk tidak selalu dibuat oleh satu tangan. HRW bekerja bersama penjahit, pengrajin, percetakan — untuk menciptakan produk sekaligus membuka peluang kolaborasi.</p>
+          <blockquote class="asc-quote">"Satu pesanan, lebih banyak pihak yang tumbuh."</blockquote>
         </div>
-        <div class="about-essence__item">
-          <span class="about-essence__word">Collaborate</span>
-          <p class="about-essence__desc">Membangun kerja sama dengan masyarakat dan pelaku usaha lokal dalam proses produksi.</p>
-        </div>
-        <div class="about-essence__item">
-          <span class="about-essence__word">Grow</span>
-          <p class="about-essence__desc">Tumbuh bersama pelanggan, mitra, dan lingkungan ekonomi di sekitar HRW Souvenir.</p>
+        <div class="asc-split__img">
+          <img src="../assets/images/products/totebag.jpg" alt="Kolaborasi HRW Souvenir" loading="lazy" />
         </div>
       </div>
-    </div>
 
-  </section>
+      <!-- Panel 6 — "Create. Collaborate. Grow." besar -->
+      <div class="asc-panel asc-panel--center" data-panel="6">
+        <span class="asc-word">Create.<br />Collaborate.<br />Grow.</span>
+      </div>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-section__inner">
-      <h2 class="cta-section__heading">Tertarik<br />berkolaborasi<br />bersama kami?</h2>
-      <p class="cta-section__copy">
-        Baik sebagai pelanggan maupun mitra produksi, kami terbuka untuk diskusi.
-      </p>
-      <a href="./contact.html" class="cta-section__link">
-        <span>Hubungi Kami</span>
-        <span class="cta-section__link-arrow">→</span>
-      </a>
-    </div>
-  </section>
+      <!-- Panel 7 — Essence detail -->
+      <div class="asc-panel asc-panel--essence" data-panel="7">
+        <div class="asc-essence-grid">
+          <div class="asc-essence-item">
+            <span class="asc-essence-num">01</span>
+            <span class="asc-essence-word">Create</span>
+            <p class="asc-essence-desc">Menciptakan produk yang memiliki nilai, fungsi, kualitas, dan makna bagi pelanggan dan setiap orang yang terlibat.</p>
+          </div>
+          <div class="asc-essence-item">
+            <span class="asc-essence-num">02</span>
+            <span class="asc-essence-word">Collaborate</span>
+            <p class="asc-essence-desc">Membangun kerja sama dengan penjahit, pengrajin, percetakan, dan pelaku usaha lokal dalam setiap proses produksi.</p>
+          </div>
+          <div class="asc-essence-item">
+            <span class="asc-essence-num">03</span>
+            <span class="asc-essence-word">Grow</span>
+            <p class="asc-essence-desc">Tumbuh bersama pelanggan, mitra, dan lingkungan ekonomi di sekitar HRW — satu pesanan, lebih banyak pihak yang berkembang.</p>
+          </div>
+        </div>
+      </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__logo">
-        <img src="../assets/images/logo/logo samping.png" alt="HRW Souvenir" />
+      <!-- Panel 8 — CTA -->
+      <div class="asc-panel asc-panel--center" data-panel="8">
+        <div class="asc-cta">
+          <h2 class="asc-cta__heading">Ada yang ingin<br />kamu pesan<br />atau diskusikan?</h2>
+          <p class="asc-cta__copy">Ceritakan kebutuhanmu — kami bantu dari konsultasi, desain, sampai produk jadi di tangan kamu.</p>
+          <a href="./contact.html" class="asc-cta__link">Hubungi Kami →</a>
+        </div>
       </div>
-      <p class="footer__tagline">"Dibuat Bersama, Untuk Setiap Cerita."</p>
-      <div class="footer__links">
-        <a href="./products.html" class="footer__link">Products</a>
-        <span class="footer__sep">·</span>
-        <a href="./galeri.html" class="footer__link">Galeri</a>
-        <span class="footer__sep">·</span>
-        <a href="./about.html" class="footer__link">About</a>
-        <span class="footer__sep">·</span>
-        <a href="./contact.html" class="footer__link">Contact</a>
-        <span class="footer__sep">·</span>
-        <a href="https://wa.me/6281234567890" target="_blank" class="footer__link">WhatsApp</a>
-        <span class="footer__sep">·</span>
-        <a href="https://instagram.com/hrwsouvenir" target="_blank" class="footer__link">Instagram</a>
+
+      <!-- Scroll progress dots -->
+      <div class="asc-dots" id="asc-dots">
+        <span class="asc-dot is-active" data-dot="1"></span>
+        <span class="asc-dot" data-dot="2"></span>
+        <span class="asc-dot" data-dot="3"></span>
+        <span class="asc-dot" data-dot="4"></span>
+        <span class="asc-dot" data-dot="5"></span>
+        <span class="asc-dot" data-dot="6"></span>
+        <span class="asc-dot" data-dot="7"></span>
+        <span class="asc-dot" data-dot="8"></span>
       </div>
-      <div class="footer__bottom">
-        <p class="footer__copy">© <span id="footer-year">2026</span> HRW Souvenir. All Rights Reserved.</p>
-        <p class="footer__essence">Create · Collaborate · Grow</p>
-      </div>
+
     </div>
-  </footer>
+    <!-- END STAGE -->
+
+  </div>
+  <!-- END WRAP -->
 
   <script src="../js/main.js"></script>
 </body>

@@ -8,7 +8,7 @@
   <link rel="icon" href="../assets/images/logo/logo lingkaran.png" type="image/png" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
+<body class="about-dark">
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
@@ -25,11 +25,11 @@
     </div>
   </nav>
 
-  <!-- FULLSCREEN NAV OVERLAY -->
+  <!-- NAV OVERLAY -->
   <div class="nav-overlay" id="nav-overlay">
     <nav class="nav-overlay__links">
       <a href="./products.html" class="nav-overlay__link nav-overlay__link--active" data-close>Products</a>
-      <a href="./galeri.html" class="nav-overlay__link" data-close>Galeri</a>
+      <a href="./galeri.html"   class="nav-overlay__link" data-close>Galeri</a>
       <a href="./about.html"    class="nav-overlay__link" data-close>About</a>
       <a href="./contact.html"  class="nav-overlay__link" data-close>Contact</a>
     </nav>
@@ -40,202 +40,120 @@
     </div>
   </div>
 
-  <!-- PAGE HEADER -->
-  <header class="page-header">
-    <div class="page-header__inner">
-      <span class="page-header__eyebrow">Catalogue &middot; Collection</span>
-      <h1 class="page-header__title">Products</h1>
-      <p class="page-header__desc">Koleksi souvenir, merchandise, dan karya sablon custom dengan kualitas presisi untuk kebutuhan personal maupun brand.</p>
-    </div>
-  </header>
+  <!-- SCROLL STORY WRAPPER — 7 panel x 100vh -->
+  <div class="asc-wrap" id="asc-wrap">
+    <div class="asc-stage" id="asc-stage">
 
-  <!-- PRODUCT CATEGORIES (EDITORIAL ZIG-ZAG) -->
-  <section class="product-section">
+      <!-- Panel 1 — "Products" besar -->
+      <div class="asc-panel asc-panel--center is-active" data-panel="1">
+        <span class="asc-word">Products</span>
+      </div>
 
-    <!-- 01 Souvenir -->
-    <article class="product-category product-category--left" id="souvenir">
-      <div class="product-category__inner">
-        <div class="product-category__visual">
-          <div class="product-item__frame">
-            <img src="../assets/images/6 produk depan/mug_final.jpg" alt="Mug Keramik Custom Souvenir HRW" class="product-item__img" loading="lazy" />
-            <span class="product-item__badge">01 &middot; Souvenir</span>
-          </div>
+      <!-- Panel 2 — Header detail -->
+      <div class="asc-panel asc-panel--left" data-panel="2">
+        <span class="asc-eyebrow">Catalogue &middot; Collection</span>
+        <h1 class="asc-heading">Souvenir &amp; Merchandise<br />Custom.</h1>
+        <p class="asc-desc">Koleksi souvenir, merchandise, dan karya sablon custom dengan kualitas presisi untuk kebutuhan personal maupun brand.</p>
+      </div>
+
+      <!-- Panel 3 — Mug Keramik -->
+      <div class="asc-panel asc-panel--split" data-panel="3">
+        <div class="asc-split__img">
+          <img src="../assets/images/6 produk depan/mug_final.jpg" alt="Mug Keramik Custom HRW" loading="lazy" />
+        <span class="asc-img-badge">01 &middot; Souvenir</span>
         </div>
-        <div class="product-category__content">
-          <div class="product-category__meta-top">
-            <span class="product-category__num-serif">01</span>
-            <span class="product-category__kicker">Momen &amp; Kenang-kenangan</span>
-          </div>
-          <h2 class="product-category__title">Mug Keramik Custom</h2>
-          <p class="product-category__tagline">"Sentuhan personal yang abadi untuk setiap perayaan."</p>
-          <p class="product-category__desc">
-            Pilihan tepat untuk souvenir pernikahan, seminar, maupun kado personal. Dibuat dari material keramik tebal dengan hasil cetak warna tajam yang aman digunakan harian serta tidak mudah pudar saat dicuci.
-          </p>
-          <ul class="product-specs">
+        <div class="asc-split__content">
+          <span class="asc-eyebrow">01 &middot; Souvenir</span>
+          <h2 class="asc-subheading">Mug Keramik Custom</h2>
+          <p class="asc-copy">Pilihan tepat untuk souvenir pernikahan, seminar, maupun kado personal. Dibuat dari material keramik tebal dengan hasil cetak warna tajam yang aman digunakan harian.</p>
+          <ul class="asc-specs">
             <li><strong>Material:</strong> Keramik SNI High Grade Food-Safe</li>
             <li><strong>Finishing:</strong> Glossy / Matte Full Color Decal Print</li>
             <li><strong>Kustomisasi:</strong> Desain Bebas, Packaging Box Khusus</li>
           </ul>
-          <div class="product-category__action">
-            <a href="./contact.html" class="product-btn-editorial">
-              <span>Pesan Souvenir Ini</span>
-              <span class="product-btn-arrow">&rarr;</span>
-            </a>
-          </div>
+          <a href="./contact.html" class="asc-cta__link">Pesan Souvenir Ini →</a>
         </div>
       </div>
-    </article>
 
-    <div class="product-sep-line"></div>
-
-    <!-- 02 Custom Merchandise -->
-    <article class="product-category product-category--right" id="merchandise">
-      <div class="product-category__inner">
-        <div class="product-category__visual">
-          <div class="product-item__frame">
-            <img src="../assets/images/6 produk depan/totebag_final.jpg" alt="Totebag Canvas Merchandise HRW" class="product-item__img" loading="lazy" />
-            <span class="product-item__badge">02 &middot; Merchandise</span>
-          </div>
-        </div>
-        <div class="product-category__content">
-          <div class="product-category__meta-top">
-            <span class="product-category__num-serif">02</span>
-            <span class="product-category__kicker">Identitas Brand &amp; Komunitas</span>
-          </div>
-          <h2 class="product-category__title">Totebag Canvas Premium</h2>
-          <p class="product-category__tagline">"Fungsionalitas berpadu dengan estetika visual brand-mu."</p>
-          <p class="product-category__desc">
-            Merchandise serbaguna dengan daya tahan tinggi, cocok untuk goodybag event, merchandise kampus, hingga perlengkapan promosi bisnis. Jahitan kuat dengan kapasitas optimal untuk menunjang aktivitas harian.
-          </p>
-          <ul class="product-specs">
+      <!-- Panel 4 — Totebag Canvas -->
+      <div class="asc-panel asc-panel--split asc-panel--reverse" data-panel="4">
+        <div class="asc-split__content">
+          <span class="asc-eyebrow">02 &middot; Merchandise</span>
+          <h2 class="asc-subheading">Totebag Canvas Premium</h2>
+          <p class="asc-copy">Merchandise serbaguna dengan daya tahan tinggi, cocok untuk goodybag event, merchandise kampus, hingga perlengkapan promosi bisnis.</p>
+          <ul class="asc-specs">
             <li><strong>Material:</strong> Canvas Twill / Blacu Tebal Berkualitas</li>
             <li><strong>Aksesoris:</strong> Resleting / Velcro / Kantong Dalam</li>
-            <li><strong>Finishing:</strong> Sablon Presisi Manual &amp; Direct-to-Film (DTF)</li>
+            <li><strong>Finishing:</strong> Sablon Presisi Manual &amp; DTF</li>
           </ul>
-          <div class="product-category__action">
-            <a href="./contact.html" class="product-btn-editorial">
-              <span>Diskusikan Merchandise</span>
-              <span class="product-btn-arrow">&rarr;</span>
-            </a>
-          </div>
+          <a href="./contact.html" class="asc-cta__link">Diskusikan Merchandise →</a>
+        </div>
+        <div class="asc-split__img">
+          <img src="../assets/images/6 produk depan/totebag_final.jpg" alt="Totebag Canvas HRW" loading="lazy" />
+        <span class="asc-img-badge">02 &middot; Merchandise</span>
         </div>
       </div>
-    </article>
 
-    <div class="product-sep-line"></div>
-
-    <!-- 03 Sablon -->
-    <article class="product-category product-category--left" id="sablon">
-      <div class="product-category__inner">
-        <div class="product-category__visual">
-          <div class="product-item__frame">
-            <img src="../assets/images/6 produk depan/kaos_final.jpg" alt="Kaos Sablon Custom HRW" class="product-item__img" loading="lazy" />
-            <span class="product-item__badge">03 &middot; Sablon</span>
-          </div>
+      <!-- Panel 5 — Kaos Sablon -->
+      <div class="asc-panel asc-panel--split" data-panel="5">
+        <div class="asc-split__img">
+          <img src="../assets/images/6 produk depan/kaos_final.jpg" alt="Kaos Sablon Custom HRW" loading="lazy" />
+        <span class="asc-img-badge">03 &middot; Sablon</span>
         </div>
-        <div class="product-category__content">
-          <div class="product-category__meta-top">
-            <span class="product-category__num-serif">03</span>
-            <span class="product-category__kicker">Apparel &amp; Screen Printing</span>
-          </div>
-          <h2 class="product-category__title">Kaos Sablon Custom</h2>
-          <p class="product-category__tagline">"Kenyamanan bahan premium dengan detail sablon presisi."</p>
-          <p class="product-category__desc">
-            Layanan sablon kaos untuk seragam komunitas, gathering perusahaan, merchandise band, maupun pakaian distro. Menggunakan tinta berkualitas tinggi yang menyatu sempurna pada serat kain dan tidak mudah retak.
-          </p>
-          <ul class="product-specs">
-            <li><strong>Bahan Kaos:</strong> 100% Cotton Combed 24s / 30s Soft Handfeel</li>
-            <li><strong>Teknik Sablon:</strong> Plastisol, Rubber, High Density, &amp; DTF</li>
-            <li><strong>Ukuran:</strong> XS hingga 4XL dengan pola cutting modern</li>
+        <div class="asc-split__content">
+          <span class="asc-eyebrow">03 &middot; Sablon</span>
+          <h2 class="asc-subheading">Kaos Sablon Custom</h2>
+          <p class="asc-copy">Layanan sablon kaos untuk seragam komunitas, gathering perusahaan, merchandise band, maupun pakaian distro. Tinta berkualitas tinggi yang tidak mudah retak.</p>
+          <ul class="asc-specs">
+            <li><strong>Bahan:</strong> 100% Cotton Combed 24s / 30s Soft Handfeel</li>
+            <li><strong>Teknik:</strong> Plastisol, Rubber, High Density &amp; DTF</li>
+            <li><strong>Ukuran:</strong> XS hingga 4XL cutting modern</li>
           </ul>
-          <div class="product-category__action">
-            <a href="./contact.html" class="product-btn-editorial">
-              <span>Pesan Sablon Kaos</span>
-              <span class="product-btn-arrow">&rarr;</span>
-            </a>
-          </div>
+          <a href="./contact.html" class="asc-cta__link">Pesan Sablon Kaos →</a>
         </div>
       </div>
-    </article>
 
-    <div class="product-sep-line"></div>
-
-    <!-- 04 Custom Order -->
-    <article class="product-category product-category--right" id="custom">
-      <div class="product-category__inner">
-        <div class="product-category__visual">
-          <div class="product-item__frame">
-            <img src="../assets/images/6 produk depan/tumbler_final.jpg" alt="Tumbler Custom Insulated HRW" class="product-item__img" loading="lazy" />
-            <span class="product-item__badge">04 &middot; Custom Order</span>
-          </div>
-        </div>
-        <div class="product-category__content">
-          <div class="product-category__meta-top">
-            <span class="product-category__num-serif">04</span>
-            <span class="product-category__kicker">Bespoke &amp; Corporate Set</span>
-          </div>
-          <h2 class="product-category__title">Tumbler Custom Insulated</h2>
-          <p class="product-category__tagline">"Eksklusif, elegan, dan dirancang tahan lama."</p>
-          <p class="product-category__desc">
-            Pilihan premium untuk hadiah eksekutif, gift set korporat, atau pesanan khusus dengan spesifikasi unik. Tahan menjaga suhu panas/dingin berjam-jam dengan opsi grafir laser nama atau logo perusahaan.
-          </p>
-          <ul class="product-specs">
+      <!-- Panel 6 — Tumbler Custom -->
+      <div class="asc-panel asc-panel--split asc-panel--reverse" data-panel="6">
+        <div class="asc-split__content">
+          <span class="asc-eyebrow">04 &middot; Custom Order</span>
+          <h2 class="asc-subheading">Tumbler Custom Insulated</h2>
+          <p class="asc-copy">Pilihan premium untuk hadiah eksekutif, gift set korporat, atau pesanan khusus. Tahan menjaga suhu panas/dingin berjam-jam dengan opsi grafir laser.</p>
+          <ul class="asc-specs">
             <li><strong>Material:</strong> Double Wall Vacuum Stainless Steel 304</li>
-            <li><strong>Metode Kustom:</strong> Laser Engraving, UV Print, Hardbox Gift Set</li>
-            <li><strong>Fitur:</strong> Tahan Dingin hingga 24 Jam &amp; Panas hingga 12 Jam</li>
+            <li><strong>Metode:</strong> Laser Engraving, UV Print, Hardbox Gift Set</li>
+            <li><strong>Fitur:</strong> Dingin 24 Jam &amp; Panas 12 Jam</li>
           </ul>
-          <div class="product-category__action">
-            <a href="./contact.html" class="product-btn-editorial">
-              <span>Konsultasi Custom Order</span>
-              <span class="product-btn-arrow">&rarr;</span>
-            </a>
-          </div>
+          <a href="./contact.html" class="asc-cta__link">Konsultasi Custom Order →</a>
+        </div>
+        <div class="asc-split__img">
+          <img src="../assets/images/6 produk depan/tumbler_final.jpg" alt="Tumbler Custom HRW" loading="lazy" />
+        <span class="asc-img-badge">04 &middot; Custom Order</span>
         </div>
       </div>
-    </article>
 
-  </section>
+      <!-- Panel 7 — CTA -->
+      <div class="asc-panel asc-panel--center" data-panel="7">
+        <div class="asc-cta">
+          <h2 class="asc-cta__heading">Tidak yakin<br />harus mulai<br />dari mana?</h2>
+          <p class="asc-cta__copy">Ceritakan kebutuhanmu. Kami bantu tentukan produk, bahan, dan jumlah yang paling sesuai.</p>
+          <a href="https://wa.me/6281234567890" target="_blank" class="asc-cta__link">Konsultasi via WhatsApp →</a>
+        </div>
+      </div>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-section__inner">
-      <h2 class="cta-section__heading">Tidak yakin<br />harus mulai<br />dari mana?</h2>
-      <p class="cta-section__copy">
-        Ceritakan kebutuhanmu. Kami akan bantu tentukan produk, bahan, dan jumlah yang paling sesuai.
-      </p>
-      <a href="https://wa.me/6281234567890" target="_blank" class="cta-section__link">
-        <span>Konsultasi via WhatsApp</span>
-        <span class="cta-section__link-arrow">&rarr;</span>
-      </a>
+      <!-- Scroll progress dots -->
+      <div class="asc-dots" id="asc-dots">
+        <span class="asc-dot is-active" data-dot="1"></span>
+        <span class="asc-dot" data-dot="2"></span>
+        <span class="asc-dot" data-dot="3"></span>
+        <span class="asc-dot" data-dot="4"></span>
+        <span class="asc-dot" data-dot="5"></span>
+        <span class="asc-dot" data-dot="6"></span>
+        <span class="asc-dot" data-dot="7"></span>
+      </div>
+
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__logo">
-        <img src="../assets/images/logo/logo samping.png" alt="HRW Souvenir" />
-      </div>
-      <p class="footer__tagline">"Dibuat Bersama, Untuk Setiap Cerita."</p>
-      <div class="footer__links">
-        <a href="./products.html" class="footer__link">Products</a>
-        <span class="footer__sep">&middot;</span>
-        <a href="./galeri.html" class="footer__link">Galeri</a>
-        <span class="footer__sep">&middot;</span>
-        <a href="./about.html" class="footer__link">About</a>
-        <span class="footer__sep">&middot;</span>
-        <a href="./contact.html" class="footer__link">Contact</a>
-        <span class="footer__sep">&middot;</span>
-        <a href="https://wa.me/6281234567890" target="_blank" class="footer__link">WhatsApp</a>
-        <span class="footer__sep">&middot;</span>
-        <a href="https://instagram.com/hrwsouvenir" target="_blank" class="footer__link">Instagram</a>
-      </div>
-      <div class="footer__bottom">
-        <p class="footer__copy">&copy; <span id="footer-year">2026</span> HRW Souvenir. All Rights Reserved.</p>
-        <p class="footer__essence">Create &middot; Collaborate &middot; Grow</p>
-      </div>
-    </div>
-  </footer>
+  </div>
 
   <script src="../js/main.js"></script>
 </body>

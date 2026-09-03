@@ -57,7 +57,7 @@
      REVEAL ANIMATION — Fade Up on Scroll
      ============================================ */
   function initReveal() {
-    var elements = document.querySelectorAll('.reveal');
+    var elements = document.querySelectorAll('.reveal, .about-slide, .about-panel');
     if (!elements.length || !('IntersectionObserver' in window)) {
       // Fallback: show all immediately
       elements.forEach(function(el) { el.classList.add('is-visible'); });
@@ -178,6 +178,117 @@
     handleScroll();
   }
 
+
+  /* ============================================
+     PRODUCTS DIMMER — gelap saat welcome naik
+     ============================================ */
+  function initProductsDimmer() {
+    var dimmer    = document.getElementById('products-dimmer');
+    var welcomeEl = document.querySelector('.hg-welcome');
+    if (!dimmer || !welcomeEl) return;
+
+    function handleScroll() {
+      var rect = welcomeEl.getBoundingClientRect();
+      var vh   = window.innerHeight;
+
+      // welcomeEl.top = vh    → belum masuk (opacity 0)
+      // welcomeEl.top = 0     → sudah full layar (opacity max)
+      // Range: dari vh sampai 0
+      var progress = Math.min(Math.max((vh - rect.top) / vh, 0), 1);
+      var opacity  = Math.min(progress * 0.75, 0.65);
+
+      dimmer.style.background = 'rgba(20,19,17,' + opacity + ')';
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
+
+  /* ============================================
+     WELCOME DIMMER — gelap saat feature naik
+     ============================================ */
+  function initWelcomeDimmer() {
+    var dimmer    = document.getElementById('welcome-dimmer');
+    var featureEl = document.querySelector('.hg-feature-pin .hg-feature');
+    if (!dimmer || !featureEl) return;
+
+    function handleScroll() {
+      var rect = featureEl.getBoundingClientRect();
+      var vh   = window.innerHeight;
+
+      // featureEl.top = vh  → belum masuk (opacity 0)
+      // featureEl.top = 0   → sudah full layar (opacity max)
+      var progress = Math.min(Math.max((vh - rect.top) / vh, 0), 1);
+      var opacity  = Math.min(progress * 0.75, 0.65);
+
+      dimmer.style.background = 'rgba(20,19,17,' + opacity + ')';
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
+
+  /* ============================================
+     ABOUT SCROLL CINEMA
+     Panel berganti saat scroll, stage tetap diam
+     ============================================ */
+  function initAboutCinema() {
+    var wrap   = document.getElementById('asc-wrap');
+    var panels = document.querySelectorAll('.asc-panel');
+    var dots   = document.querySelectorAll('.asc-dot');
+    if (!wrap || !panels.length) return;
+
+    var totalPanels  = panels.length;
+    var currentPanel = 0;
+
+    function showPanel(index) {
+      panels.forEach(function(p, i) {
+        p.classList.remove('is-active', 'is-leaving');
+        if (i === index) {
+          p.classList.add('is-active');
+        } else if (i < index) {
+          p.classList.add('is-leaving');
+        }
+      });
+      dots.forEach(function(d, i) {
+        d.classList.toggle('is-active', i === index);
+      });
+      currentPanel = index;
+    }
+
+    function handleScroll() {
+      var rect     = wrap.getBoundingClientRect();
+      var scrolled = -rect.top;
+      var total    = wrap.offsetHeight - window.innerHeight;
+      if (total <= 0) return;
+
+      var progress = Math.min(Math.max(scrolled / total, 0), 1);
+      var index    = Math.min(
+        Math.floor(progress * totalPanels),
+        totalPanels - 1
+      );
+
+      if (index !== currentPanel) {
+        showPanel(index);
+      }
+    }
+
+    // Klik dot untuk jump ke panel
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() {
+        var total    = wrap.offsetHeight - window.innerHeight;
+        var target   = wrap.offsetTop + (i / totalPanels) * total;
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    showPanel(0);
+    handleScroll();
+  }
+
   /* ============================================
      SMOOTH SCROLL — anchor links
      ============================================ */
@@ -205,11 +316,13 @@
     initNav();
     initScrollProgress();
     initReveal();
-    initHeroParallax();
     initYear();
     initProductPinScroll();
     initSmoothScroll();
     initWelcomeBorderRadius();
+    initProductsDimmer();
+    initWelcomeDimmer();
+    initAboutCinema();
   }
 
   document.readyState === 'loading'
