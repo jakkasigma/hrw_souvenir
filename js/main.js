@@ -364,6 +364,49 @@
     handleScroll();
   }
 
+
+  /* ============================================
+     NAVBAR THEME — switch dark/light per section
+     ============================================ */
+  function initNavTheme() {
+    var navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    var isHome = window.location.pathname === '/' ||
+                 window.location.pathname.match(/index\\.html$/) ||
+                 window.location.pathname === '';
+    if (!isHome) return;
+    var sections = [
+      { el: document.querySelector('.hg-hero'),         dark: false },
+      { el: document.getElementById('welcome-pin'),     dark: true  },
+      { el: document.querySelector('.hg-feature-pin'),  dark: true  },
+      { el: document.querySelector('.hg-process'),      dark: false },
+      { el: document.querySelector('.hg-statement'),    dark: true  },
+      { el: document.querySelector('.hg-trust'),        dark: false },
+      { el: document.querySelector('.footer'),          dark: false },
+    ];
+    sections = sections.filter(function(s) { return s.el; });
+    function updateNavTheme() {
+      var scrollY = window.scrollY;
+      var currentDark = false;
+      for (var i = sections.length - 1; i >= 0; i--) {
+        var top = sections[i].el.offsetTop;
+        if (scrollY >= top - 10) {
+          currentDark = sections[i].dark;
+          break;
+        }
+      }
+      if (currentDark) {
+        navbar.classList.add('navbar--dark');
+        navbar.classList.remove('navbar--light');
+      } else {
+        navbar.classList.add('navbar--light');
+        navbar.classList.remove('navbar--dark');
+      }
+    }
+    window.addEventListener('scroll', updateNavTheme, { passive: true });
+    updateNavTheme();
+  }
+
   /* ============================================
      SMOOTH SCROLL — anchor links
      ============================================ */
@@ -398,6 +441,7 @@
     initProductsDimmer();
     initWelcomeDimmer();
     initAboutCinema();
+    initNavTheme();
   }
 
   document.readyState === 'loading'
