@@ -242,6 +242,8 @@
 
     var totalPanels  = panels.length;
     var currentPanel = 0;
+    var isMobile     = window.innerWidth <= 768;
+    var isAnimating  = false;
 
     function showPanel(index) {
       panels.forEach(function(p, i) {
@@ -258,33 +260,106 @@
       currentPanel = index;
     }
 
+    /* === DESKTOP — scroll progress biasa === */
     function handleScroll() {
+      if (window.innerWidth <= 768) return;
       var rect     = wrap.getBoundingClientRect();
       var scrolled = -rect.top;
       var total    = wrap.offsetHeight - window.innerHeight;
       if (total <= 0) return;
-
       var progress = Math.min(Math.max(scrolled / total, 0), 1);
-      var index    = Math.min(
-        Math.floor(progress * totalPanels),
-        totalPanels - 1
-      );
+      var index    = Math.min(Math.floor(progress * totalPanels), totalPanels - 1);
+      if (index !== currentPanel) showPanel(index);
+    }
 
-      if (index !== currentPanel) {
-        showPanel(index);
+    /* === MOBILE — swipe / wheel per panel === */
+    function goNext() {
+      if (isAnimating) return;
+      if (currentPanel < totalPanels - 1) {
+        isAnimating = true;
+        showPanel(currentPanel + 1);
+        setTimeout(function() { isAnimating = false; }, 600);
       }
     }
 
-    // Klik dot untuk jump ke panel
+    function goPrev() {
+      if (isAnimating) return;
+      if (currentPanel > 0) {
+        isAnimating = true;
+        showPanel(currentPanel - 1);
+        setTimeout(function() { isAnimating = false; }, 600);
+      }
+    }
+
+    function initMobileSwipe() {
+      var touchStartY  = 0;
+      var touchStartX  = 0;
+      var minSwipeDist = 50;
+
+      // Touch swipe
+      wrap.addEventListener('touchstart', function(e) {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+
+      wrap.addEventListener('touchend', function(e) {
+        var dy = touchStartY - e.changedTouches[0].clientY;
+        var dx = Math.abs(touchStartX - e.changedTouches[0].clientX);
+        // Hanya trigger kalau gerak vertikal lebih dominan
+        if (Math.abs(dy) < minSwipeDist || dx > Math.abs(dy)) return;
+        if (dy > 0) goNext(); else goPrev();
+      }, { passive: true });
+
+      // Wheel scroll di mobile (trackpad/mouse pada tablet)
+      wrap.addEventListener('wheel', function(e) {
+        if (window.innerWidth > 768) return;
+        e.preventDefault();
+        if (e.deltaY > 30) goNext();
+        else if (e.deltaY < -30) goPrev();
+      }, { passive: false });
+
+      // Keyboard arrow
+      document.addEventListener('keydown', function(e) {
+        if (window.innerWidth > 768) return;
+        if (!wrap.getBoundingClientRect) return;
+        var r = wrap.getBoundingClientRect();
+        if (r.top > window.innerHeight || r.bottom < 0) return;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goNext();
+        if (e.key === 'ArrowUp'   || e.key === 'ArrowLeft')  goPrev();
+      });
+    }
+
+    function setMobileHeight() {
+      // Mobile: wrap cukup 100vh, tidak perlu ruang scroll panjang
+      if (window.innerWidth <= 768) {
+        wrap.style.height = '100vh';
+        wrap.style.overflow = 'hidden';
+      } else {
+        wrap.style.height = '';
+        wrap.style.overflow = '';
+      }
+    }
+
+    // Klik dot
     dots.forEach(function(dot, i) {
       dot.addEventListener('click', function() {
-        var total    = wrap.offsetHeight - window.innerHeight;
-        var target   = wrap.offsetTop + (i / totalPanels) * total;
-        window.scrollTo({ top: target, behavior: 'smooth' });
+        if (window.innerWidth <= 768) {
+          showPanel(i);
+        } else {
+          var total  = wrap.offsetHeight - window.innerHeight;
+          var target = wrap.offsetTop + (i / totalPanels) * total;
+          window.scrollTo({ top: target, behavior: 'smooth' });
+        }
       });
     });
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', function() {
+      setMobileHeight();
+    });
+
+    setMobileHeight();
+    initMobileSwipe();
     showPanel(0);
     handleScroll();
   }

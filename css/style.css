@@ -1411,3 +1411,32 @@ a.hg-product__info:hover .hg-product__meta { opacity:0.55; }
 
 /* --- Footer logo konsistensi --- */
 .footer__logo { display: none; }
+/* Mobile swipe mode — stage fixed, wrap overflow hidden */
+@media (max-width: 768px) {
+  .asc-wrap {
+    height: 100vh !important;
+    overflow: hidden !important;
+    position: relative;
+  }
+
+  .asc-stage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+  }
+
+  /* Dots tampil di mobile untuk navigasi */
+  .asc-dots {
+    display: flex !important;
+    right: clamp(0.75rem,2vw,1.25rem);
+  }
+
+  /* Panel aktif tidak overflow */
+  .asc-panel.is-active {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
